@@ -24,23 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# ესენი არის ქროსს საიტ სკრიპტინგისთვის, დაცვისთვის
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# ყველა არა https რექვესტები გადამისამართდება httpზე
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-# საიტზე შესვლა შეიძლება მოხოლოდ https
-SECURE_HSTS_SECONDS = 86400
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Application definition
 
@@ -80,7 +67,6 @@ AUTH_USER_MODEL = 'users.Consumer'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -160,7 +146,6 @@ DATABASES = {
     }
 }
 
-external_redis = os.environ.get('EXTERNAL_LINK_REDIS')
 
 # ვიყენებთ რედის მესეჯ ბროკერად, მჭირდება იმიტომ რომ ვაპირებ ვებსოქეთის გამოყენებას
 # მესიჯ ბროკერი საშუალებას აძლევს ჩვენს აპებს და სერვისებს რომ იურთიერთონ ცვალონ ინფორმაცია
@@ -169,10 +154,11 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [external_redis],
+            "hosts": [("localhost", 6379)],
         },
     },
 }
+
 
 
 # Password validation
@@ -217,21 +203,16 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = BASE_DIR / 'static/images'
 MEDIA_URL = 'images/'
 
-# root file for static files
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #this is for debug toolbar
-# INTERNAL_IPS = [
-#     '127.0.0.1',
-#     'localhost'
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost'
+]
 
 email_backend = os.environ.get('EMAIL_BACKEND')
 email_host = os.environ.get('EMAIL_HOST')

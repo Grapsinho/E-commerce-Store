@@ -1,6 +1,5 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from inventory.models import *
 from asgiref.sync import sync_to_async
 from django.db.models import Q
 
@@ -52,5 +51,6 @@ class LiveSearchConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def perform_product_search(self, search_query):
+        from inventory.models import ProductInventory
         # Use the sync_to_async decorator for the synchronous database query
         return list(ProductInventory.objects.filter(product__name__icontains=search_query).values("product__name", "product__unique_id", "retail_price", "img_url")[:4])

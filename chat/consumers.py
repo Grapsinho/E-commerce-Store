@@ -1,7 +1,5 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from .models import Message, Chat
-from users.models import Consumer
 from asgiref.sync import sync_to_async
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -43,6 +41,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def create_message(self, message_content, sender, chat):
+        from .models import Message, Chat
+        from users.models import Consumer
+        
         # Create a new message in the database
         chat = Chat.objects.get(pk=chat)
         sender = Consumer.objects.get(pk=sender)
