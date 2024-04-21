@@ -7,8 +7,6 @@ This is an e-commerce project built using Django. It includes various features s
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -73,17 +71,3 @@ Once you have the project set up locally:
 - Access the application in your browser at `http://localhost:8000/`.
 - Log in using your superuser credentials to access the admin dashboard.
 - Use the application as a consumer or vendor to test the features.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute, please:
-
-- Fork the repository.
-- Create a new branch for your feature or bugfix.
-- Submit a pull request.
-
-Please follow the existing coding style and write tests for any new features.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use the code as you like, but remember to credit the original authors.
