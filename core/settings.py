@@ -128,23 +128,23 @@ ASGI_APPLICATION = 'core.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': db_name,
-        'USER': db_user,
-        'PASSWORD': db_pass,
-        'HOST': db_host,
-        'PORT': db_port,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': db_name,
+#         'USER': db_user,
+#         'PASSWORD': db_pass,
+#         'HOST': db_host,
+#         'PORT': db_port,
+#     }
+# }
 
 
 # ვიყენებთ რედის მესეჯ ბროკერად, მჭირდება იმიტომ რომ ვაპირებ ვებსოქეთის გამოყენებას

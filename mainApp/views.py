@@ -344,7 +344,10 @@ def checkout_page(request):
     consumer = 'None'
     if request.user.is_authenticated:
         consumer = Consumer.objects.get(email=request.user)
-        shippingAdr = ShippingAddress.objects.get(costumer=consumer)
+        try:
+            shippingAdr = ShippingAddress.objects.get(costumer=consumer)
+        except:
+            shippingAdr = None
 
     context = {
         'products': products2,
@@ -1035,6 +1038,7 @@ def update_product_ajax(request):
                     # Save new image
                     image_file.name = sub_product_data[i_for_product_id][f'product_id_{i_for_product_id}']['product_sku'] + image_file.name
                     sub_product.img_url = image_file
+                    sub_product.save()
                 else:
                     print('No image file provided')
 
