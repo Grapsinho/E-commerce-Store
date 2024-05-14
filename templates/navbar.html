@@ -398,38 +398,44 @@
           </div>
           {% for prod in cart_data %}
 
-          <div style="margin-bottom: 1rem">
-            <a
-              href="{% url 'product_detail' prod.product.product.unique_id %}"
-              class="result_a_tag"
-              style="display: flex; align-items: center"
-              ><img
-                src="/static{{prod.product.img_url.url}}"
-                alt=""
-                style="max-width: 70px"
-              />
-              <span
-                class="result-span"
-                style="display: flex; flex-direction: column"
-              >
-                <span style="color: black">
-                  {{prod.product.product.name}}
+          <div class="add_new_product_div">
+            <div style="margin-bottom: 1rem">
+              <a
+                href="{% url 'product_detail' prod.product.product.unique_id %}"
+                class="result_a_tag"
+                style="display: flex; align-items: center"
+                ><img
+                  src="/static{{prod.product.img_url.url}}"
+                  alt=""
+                  style="max-width: 70px"
+                />
+                <span
+                  class="result-span"
+                  style="display: flex; flex-direction: column"
+                >
+                  <span style="color: black">
+                    {{prod.product.product.name}}
+                  </span>
+                  <span class="price_prod" style="color: black">
+                    {{prod.product.retail_price}}$
+                  </span>
+                  <span class="quantity" style="color: black"
+                    >Quantity: {{prod.quantity}}
+                  </span>
                 </span>
-                <span class="price_prod" style="color: black">
-                  {{prod.product.retail_price}}$
-                </span>
-                <span class="quantity" style="color: black"
-                  >Quantity: {{prod.quantity}}
-                </span>
-              </span>
-            </a>
+              </a>
 
-            <div
-              class="p-2 prod_cart_delete"
-              style="background-color: red; cursor: pointer; text-align: center"
-              data-count="{{prod.product.sku}}"
-            >
-              <i class="bi bi-trash text-light"></i>
+              <div
+                class="p-2 prod_cart_delete"
+                style="
+                  background-color: red;
+                  cursor: pointer;
+                  text-align: center;
+                "
+                data-count="{{prod.product.sku}}"
+              >
+                <i class="bi bi-trash text-light"></i>
+              </div>
             </div>
           </div>
 

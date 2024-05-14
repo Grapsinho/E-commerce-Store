@@ -167,7 +167,7 @@ $(document).ready(function () {
         $(".canva_cart").removeClass("show");
       });
 
-      $(".off_body_forProd").append(`
+      $(".add_new_product_div").append(`
             <div style="margin-bottom: 1rem;">
                 <a href="${location.protocol}//${location.host}/product_detail/${data.unique_id}/" class="result_a_tag" style="display: flex;align-items: center;">
                     <img src="/static${data.img_url}" alt="" style="max-width: 70px" />
